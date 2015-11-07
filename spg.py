@@ -275,10 +275,12 @@ def shitpost_by_amount(amount):
 		print(shitpost())
 
 if __name__ == "__main__":
-	try:
-		amount = int(input("Amount of shitposts: "))
-		if amount < 0:
-			raise ValueError("penis lol xD")
-	except ValueError:
-		amount = 1
+	amount = -1
+	while amount == -1:
+		try:
+			amount = int(input("Amount of shitposts: "))
+			if amount < 0:
+				raise ValueError("penis lol xD")
+		except ValueError:
+			amount = -1
 	shitpost_by_amount(amount)
