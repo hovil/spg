@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Every great project starts with... ENTERPRISE QUALITY.
 
 ##############################################################
@@ -22,7 +23,6 @@
 #  quoting
 #  botnet implementation
 
-
 #limiting this shit to prefixes is terrible we need shitposts generated so real that we could make an OP with them
 #how could we do that?
 #something along the lines of 'only niggers will use "thing" why are you still using "thing" /tech/?'
@@ -39,7 +39,8 @@
 # drop a tab drop a brace ezpz lemonsqueezy
 #it lets you do things a lot of different ways
 
-import random, re, os
+import random, re, os, signal, sys
+signal.signal(signal.SIGINT, sys.exit(0))
 
 prefix = prefixes = [
 	'i hate', 'I hate', 'I fucking hate',
@@ -273,14 +274,11 @@ def shitpost_by_amount(amount):
 	for i in range(amount): # fucking py3 whatever
 		print(shitpost())
 
-use_input = True
-if use_input:
-	amount = -1
-	while amount == -1:
-		try:
-			amount = int(input("Amount of shitposts: "))
-			if amount < 0:
-				raise ValueError("penis lol xD")
-		except ValueError:
-			amount = -1
+if __name__ == "__main__":
+	try:
+		amount = int(input("Amount of shitposts: "))
+		if amount < 0:
+			raise ValueError("penis lol xD")
+	except ValueError:
+		amount = 1
 	shitpost_by_amount(amount)
